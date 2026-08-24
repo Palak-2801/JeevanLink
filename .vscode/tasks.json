@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "1. Install dependencies",
+            "type": "shell",
+            "command": "pip install -r requirements.txt pytest",
+            "problemMatcher": []
+        },
+        {
+            "label": "2. Set up database",
+            "type": "shell",
+            "command": "python -m jeevanlink.init_db && python -m jeevanlink.seed_data",
+            "problemMatcher": []
+        },
+        {
+            "label": "3. Run tests",
+            "type": "shell",
+            "command": "python -m pytest jeevanlink/tests -q",
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
+}

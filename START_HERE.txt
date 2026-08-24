@@ -1,0 +1,68 @@
+=========================================
+  JEEVANLINK - QUICK START
+=========================================
+
+New here?  ->  README.md
+VS Code?   ->  VSCODE_SETUP.md
+Go online? ->  DEPLOY.md
+
+
+RUN IT LOCALLY
+-----------------------------------------
+    pip install -r requirements.txt
+
+    python -m jeevanlink.init_db
+    python -m jeevanlink.seed_data
+
+    python main.py
+
+Then open:  http://127.0.0.1:5000
+
+
+PAGES
+-----------------------------------------
+    /            Home
+    /donate      Donor registration
+    /request     Create a blood request
+    /respond/... Donor accepts or declines
+    /api/health  Backend status
+
+
+CHECKS
+-----------------------------------------
+    python -m pytest jeevanlink/tests -q
+        -> 17 passed
+
+    python verify.py
+        -> 30 end-to-end checks
+
+
+NOTES
+-----------------------------------------
+* Do not open the frontend with Live Server
+  on port 5500. Flask serves the frontend
+  itself on port 5000.
+
+* No DATABASE_URL set = local SQLite.
+  Set it to a PostgreSQL URL and every
+  device shares one database.
+
+* No Twilio or SMTP credentials = alerts
+  print to the terminal. Add them and real
+  WhatsApp or email messages are sent.
+
+* To turn on real alerts, run:
+
+      python setup_alerts.py
+
+  It asks for the credentials you have,
+  tests each one live, and writes a .env
+  file. Skip anything you do not have.
+
+* If email does not arrive:
+
+      python check_email.py you@gmail.com
+
+  It prints the exact reason.
+
+  See DEPLOY.md for the full setup.

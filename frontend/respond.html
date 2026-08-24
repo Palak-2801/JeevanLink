@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Respond to a JeevanLink blood request."
+    >
+
+    <title>Respond to Request | JeevanLink</title>
+
+    <link rel="stylesheet" href="/donar.css">
+
+    <style>
+        .respond-wrap {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .detail-row {
+            padding: 14px 0;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-row span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .detail-row strong {
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .urgency-critical {
+            color: var(--red);
+            text-transform: uppercase;
+        }
+
+        .action-row {
+            margin-top: 28px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        /* A CSS display value beats the HTML hidden attribute, so it has
+           to be switched off explicitly. */
+        [hidden] {
+            display: none !important;
+        }
+
+        .decline-button {
+            padding: 15px 20px;
+
+            color: var(--muted);
+            background: transparent;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .decline-button:hover {
+            background: #f4eff0;
+        }
+
+        .route-box {
+            margin-top: 26px;
+            padding: 22px;
+
+            background: #f4fbf8;
+
+            border: 1px solid #bfe3d8;
+            border-radius: 14px;
+        }
+
+        .route-box h3 {
+            margin-bottom: 14px;
+            font-family: var(--serif-font);
+            font-size: 20px;
+        }
+
+        .maps-button {
+            margin-top: 18px;
+            padding: 14px 22px;
+
+            display: inline-block;
+
+            color: var(--white);
+            background: var(--green, #167563);
+
+            border-radius: 999px;
+
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 520px) {
+            .action-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="header">
+
+        <nav class="navbar container">
+
+            <a href="/" class="brand">
+
+                <span class="brand-icon">
+                    <span class="blood-drop"></span>
+                </span>
+
+                <span class="brand-name">
+                    <strong>JeevanLink</strong>
+                </span>
+
+            </a>
+
+            <a href="/" class="home-link">
+                <span aria-hidden="true">←</span>
+                Home
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="main-section">
+
+        <div class="container respond-wrap">
+
+            <section class="form-panel">
+
+                <div class="form-heading">
+
+                    <p class="small-heading red-heading">
+                        DONOR RESPONSE
+                    </p>
+
+                    <h2 id="pageHeading">Blood request</h2>
+
+                    <p id="pageIntro">
+                        Loading the request details...
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="form-message"
+                    id="formMessage"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+
+                <div id="requestDetails" hidden></div>
+
+
+                <div class="action-row" id="actionRow" hidden>
+
+                    <button
+                        type="button"
+                        class="submit-button"
+                        id="acceptButton"
+                    >
+                        I can donate
+                    </button>
+
+                    <button
+                        type="button"
+                        class="decline-button"
+                        id="declineButton"
+                    >
+                        Not available
+                    </button>
+
+                </div>
+
+
+                <div class="route-box" id="routeBox" hidden>
+
+                    <h3>Route unlocked</h3>
+
+                    <div id="routeDetails"></div>
+
+                    <a
+                        class="maps-button"
+                        id="mapsLink"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Open in Google Maps
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script src="/respond.js"></script>
+
+</body>
+
+</html>

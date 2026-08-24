@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Register as a blood donor on JeevanLink."
+    >
+
+    <title>Register as Donor | JeevanLink</title>
+
+    <link rel="stylesheet" href="donar.css" >
+    
+
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand">
+
+                <span class="brand-icon">
+                    <span class="blood-drop"></span>
+                </span>
+
+                <span class="brand-name">
+                    <strong>JeevanLink</strong>
+                </span>
+
+            </a>
+
+
+            <a href="index.html" class="home-link">
+
+                <span aria-hidden="true">←</span>
+
+                Back to Home
+
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-section">
+
+        <div class="container registration-layout">
+
+
+            <!-- ================= LEFT PANEL ================= -->
+
+            <section class="information-panel">
+
+                <p class="small-heading">
+                    BECOME A DONOR
+                </p>
+
+                <h1>
+                    A few minutes today could help save a life tomorrow.
+                </h1>
+
+                <p class="panel-description">
+                    Create your donor profile to receive relevant blood
+                    requests near your current location.
+                </p>
+
+
+                <div class="information-list">
+
+                    <div class="information-item">
+
+                        <span class="item-number">01</span>
+
+                        <div>
+
+                            <h2>Live availability</h2>
+
+                            <p>
+                                You can pause or resume emergency alerts
+                                whenever required.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-item">
+
+                        <span class="item-number blue-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h2>Nearby requests only</h2>
+
+                            <p>
+                                Your location helps us prioritise relevant
+                                requests near you.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-item">
+
+                        <span class="item-number green-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h2>Consent before connection</h2>
+
+                            <p>
+                                Exact contact and route details are shown
+                                only after you accept a request.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="privacy-note">
+
+                    <span class="privacy-icon">✓</span>
+
+                    <p>
+                        <strong>Your privacy matters.</strong>
+
+                        Your precise location and phone number will not
+                        be displayed publicly.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= FORM PANEL ================= -->
+
+            <section class="form-panel">
+
+                <div class="form-heading">
+
+                    <p class="small-heading red-heading">
+                        DONOR REGISTRATION
+                    </p>
+
+                    <h2>Create your donor profile</h2>
+
+                    <p>
+                        Fields marked with
+                        <span class="required-star">*</span>
+                        are required.
+                    </p>
+
+                </div>
+
+
+                <!-- Form Message -->
+
+                <div
+                    class="form-message"
+                    id="formMessage"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+
+                <form id="donorForm" novalidate>
+
+
+                    <!-- Personal Details -->
+
+                    <div class="form-section">
+
+                        <div class="section-title">
+
+                            <span>01</span>
+
+                            <div>
+
+                                <h3>Personal details</h3>
+
+                                <p>
+                                    Basic information required for your
+                                    donor profile.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group full-width">
+
+                                <label for="fullName">
+
+                                    Full Name
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    name="fullName"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                                <small
+                                    class="error-message"
+                                    id="fullNameError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="phoneNumber">
+
+                                    Phone Number
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <div class="phone-input">
+
+                                    <span>+91</span>
+
+                                    <input
+                                        type="tel"
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        placeholder="9876543210"
+                                        maxlength="10"
+                                        inputmode="numeric"
+                                        autocomplete="tel"
+                                        required
+                                    >
+
+                                </div>
+
+                                <small
+                                    class="error-message"
+                                    id="phoneNumberError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="name@example.com"
+                                    autocomplete="email"
+                                >
+
+                                <small
+                                    class="error-message"
+                                    id="emailError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="age">
+
+                                    Age
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="age"
+                                    name="age"
+                                    placeholder="Example: 24"
+                                    min="18"
+                                    max="65"
+                                    required
+                                >
+
+                                <small
+                                    class="input-hint"
+                                >
+                                    Preliminary range: 18–65 years.
+                                </small>
+
+                                <small
+                                    class="error-message"
+                                    id="ageError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="bloodGroup">
+
+                                    Blood Group
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <select
+                                    id="bloodGroup"
+                                    name="bloodGroup"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select blood group
+                                    </option>
+
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+
+                                </select>
+
+                                <small
+                                    class="error-message"
+                                    id="bloodGroupError"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Donation Information -->
+
+                    <div class="form-section">
+
+                        <div class="section-title">
+
+                            <span>02</span>
+
+                            <div>
+
+                                <h3>Donation information</h3>
+
+                                <p>
+                                    Used only for preliminary matching.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="lastDonationDate">
+                                    Last Donation Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="lastDonationDate"
+                                    name="lastDonationDate"
+                                >
+
+                                <small
+                                    class="input-hint"
+                                    id="donationHint"
+                                >
+                                    Leave blank if you have never donated.
+                                </small>
+
+                                <small
+                                    class="error-message"
+                                    id="lastDonationDateError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="availability">
+
+                                    Current Availability
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <select
+                                    id="availability"
+                                    name="availability"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select availability
+                                    </option>
+
+                                    <option value="available">
+                                        Available now
+                                    </option>
+
+                                    <option value="urgent-only">
+                                        Urgent requests only
+                                    </option>
+
+                                    <option value="unavailable">
+                                        Currently unavailable
+                                    </option>
+
+                                </select>
+
+                                <small
+                                    class="error-message"
+                                    id="availabilityError"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Location Details -->
+
+                    <div class="form-section">
+
+                        <div class="section-title">
+
+                            <span>03</span>
+
+                            <div>
+
+                                <h3>Location</h3>
+
+                                <p>
+                                    Used to calculate approximate distance
+                                    from the requested hospital.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="city">
+
+                                City / Area
+
+                                <span class="required-star">*</span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                placeholder="Example: Gomti Nagar, Lucknow"
+                                required
+                            >
+
+                            <small
+                                class="error-message"
+                                id="cityError"
+                            ></small>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="location-button"
+                            id="locationButton"
+                        >
+
+                            <span class="location-symbol">
+                                ◎
+                            </span>
+
+                            <span id="locationButtonText">
+                                Use My Current Location
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            class="location-status"
+                            id="locationStatus"
+                            aria-live="polite"
+                        >
+
+                            Location has not been captured.
+
+                        </div>
+
+
+                        <input
+                            type="hidden"
+                            id="latitude"
+                            name="latitude"
+                        >
+
+                        <input
+                            type="hidden"
+                            id="longitude"
+                            name="longitude"
+                        >
+
+                        <small
+                            class="error-message"
+                            id="locationError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Consent -->
+
+                    <div class="form-section consent-section">
+
+                        <div class="checkbox-group">
+
+                            <input
+                                type="checkbox"
+                                id="smsConsent"
+                                name="smsConsent"
+                            >
+
+                            <label for="smsConsent">
+
+                                I agree to receive SMS alerts for relevant
+                                nearby blood requests.
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="checkbox-group">
+
+                            <input
+                                type="checkbox"
+                                id="informationConsent"
+                                name="informationConsent"
+                                required
+                            >
+
+                            <label for="informationConsent">
+
+                                I confirm that the information provided
+                                is correct and understand that final
+                                donation eligibility will be verified by
+                                a licensed blood centre.
+
+                                <span class="required-star">*</span>
+
+                            </label>
+
+                        </div>
+
+
+                        <small
+                            class="error-message"
+                            id="informationConsentError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                        id="submitButton"
+                    >
+
+                        <span id="submitButtonText">
+                            Register as Donor
+                        </span>
+
+                        <span aria-hidden="true">→</span>
+
+                    </button>
+
+
+                    <p class="medical-disclaimer">
+
+                        JeevanLink supports donor coordination only.
+                        Medical screening and blood compatibility are
+                        confirmed by the hospital or licensed blood
+                        centre.
+
+                    </p>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= SUCCESS POPUP ================= -->
+
+    <div
+        class="success-overlay"
+        id="successOverlay"
+        aria-hidden="true"
+    >
+
+        <div class="success-card">
+
+            <span class="success-check">✓</span>
+
+            <p class="small-heading red-heading">
+                REGISTRATION COMPLETE
+            </p>
+
+            <h2>Thank you for becoming a donor.</h2>
+
+            <p>
+                Your donor profile has been created successfully.
+                You can now receive relevant nearby blood requests.
+            </p>
+
+            <div class="donor-id-box">
+
+                Donor ID:
+
+                <strong id="registeredDonorId">
+                    JL-0000
+                </strong>
+
+            </div>
+
+            <div class="success-buttons">
+
+                <button
+                    type="button"
+                    class="submit-button"
+                    id="closeSuccessButton"
+                >
+                    Register Another Donor
+                </button>
+
+                <a
+                    href="index.html"
+                    class="home-button"
+                >
+                    Go to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="donar.js"></script>
+
+</body>
+
+</html>

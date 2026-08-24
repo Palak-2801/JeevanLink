@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="LifeLink connects urgent blood requests with nearby available donors."
+    >
+
+    <title>JeevanLink</title>
+
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="header">
+
+        <nav class="navbar container">
+
+            <a href="#home" class="logo">
+
+                <span class="logo-icon">
+                    <span class="blood-drop"></span>
+                </span>
+
+                <span class="logo-text">
+                    <strong>JeevanLink</strong>
+                </span>
+
+            </a>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+
+                <a href="#problem">Problem</a>
+
+                <a href="#workflow">How It Works</a>
+
+                <a href="#features">Features</a>
+
+                <a href="donar.html" class="nav-donor-button">
+                    Become a Donor
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- ================= HERO SECTION ================= -->
+
+        <section class="hero" id="home">
+
+            <div class="container hero-container">
+
+                <!-- Hero Content -->
+
+                <div class="hero-content reveal">
+
+                    <h1>
+                        Blood help should move at
+                        <span>emergency speed.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        JeevanLink turns an urgent hospital request into a
+                        ranked, consent-based and trackable donor response
+                        using location matching, SMS alerts and live route
+                        guidance.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="request.html"
+                            class="primary-button"
+                        >
+                            I Need Blood
+                            <span>→</span>
+                        </a>
+
+                        <a
+                            href="donar.html"
+                            class="secondary-button"
+                        >
+                            I Want to Donate
+                        </a>
+
+                    </div>
+
+                    <div class="safety-message">
+
+                        <span class="check-icon">✓</span>
+
+                        <p>
+                            <strong>Safety first:</strong>
+                            Final donor screening and blood compatibility
+                            are confirmed by the licensed blood centre.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Map Preview -->
+
+                <div class="hero-map reveal">
+
+                    <div class="map-card">
+
+                        <div class="map-card-header">
+
+                            <div class="live-status">
+                                <span class="live-dot"></span>
+                                Response Preview
+                            </div>
+
+                            <span class="request-number">
+                                REQ-024
+                            </span>
+
+                        </div>
+
+
+                        <div class="map-area" id="mapArea">
+
+                            <!-- Decorative roads -->
+
+                            <span class="road road-one"></span>
+                            <span class="road road-two"></span>
+                            <span class="road road-three"></span>
+                            <span class="road road-four"></span>
+                            <span class="road road-five"></span>
+
+
+                            <!-- Route line -->
+
+                            <svg
+                                class="route-svg"
+                                viewBox="0 0 600 430"
+                                aria-label="Route from donor to hospital"
+                            >
+                                <path
+                                    d="
+                                        M90 345
+                                        C145 330 168 280 225 267
+                                        C290 252 305 208 362 194
+                                        C425 178 448 125 515 90
+                                    "
+                                />
+                            </svg>
+
+
+                            <!-- Donor Marker -->
+
+                            <div class="location-marker donor-marker">
+
+                                <span class="marker-circle"></span>
+
+                                <small>DONOR</small>
+
+                            </div>
+
+
+                            <!-- Hospital Marker -->
+
+                            <div class="location-marker hospital-marker">
+
+                                <span class="marker-circle"></span>
+
+                                <small>HOSPITAL</small>
+
+                            </div>
+
+
+                            <!-- Route Information -->
+
+                            <div class="route-information">
+
+                                <div>
+
+                                    <small id="routeLabel">
+                                        Nearest Accepted Donor
+                                    </small>
+
+                                    <strong id="routeDistance">
+                                        2.4 km
+                                    </strong>
+
+                                </div>
+
+                                <div class="eta-information">
+
+                                    <small>Estimated Time</small>
+
+                                    <strong id="routeTime">
+                                        8 min
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Preview Buttons -->
+
+                        <div class="preview-buttons">
+
+                            <button
+                                type="button"
+                                class="preview-button"
+                                data-state="request"
+                            >
+                                1. Request
+                            </button>
+
+                            <button
+                                type="button"
+                                class="preview-button"
+                                data-state="match"
+                            >
+                                2. Match
+                            </button>
+
+                            <button
+                                type="button"
+                                class="preview-button active"
+                                data-state="route"
+                            >
+                                3. Route
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Capability Strip -->
+
+            <div class="container">
+
+                <div class="capability-strip reveal">
+
+                    <div class="capability">
+
+                        <strong>01</strong>
+
+                        <span>Live Availability</span>
+
+                    </div>
+
+                    <div class="capability">
+
+                        <strong>02</strong>
+
+                        <span>Nearby Donor Ranking</span>
+
+                    </div>
+
+                    <div class="capability">
+
+                        <strong>03</strong>
+
+                        <span>SMS Activation</span>
+
+                    </div>
+
+                    <div class="capability">
+
+                        <strong>04</strong>
+
+                        <span>Route and ETA</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROBLEM SECTION ================= -->
+
+        <section class="section problem-section" id="problem">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <h2>
+                        The gap is between “we need blood”
+                        and “someone is coming.”
+                    </h2>
+
+                    <p>
+                        Calls, social media posts and outdated donor lists
+                        do not show who is available, nearby or already
+                        responding.
+                    </p>
+
+                </div>
+
+
+                <div class="problem-cards">
+
+                    <article class="problem-card dark-card reveal">
+
+                        <p class="card-label">
+                            WHY IT MATTERS
+                        </p>
+
+                        <h3>14.6M</h3>
+
+                        <p>
+                            Estimated annual blood requirement in India.
+                        </p>
+
+                        <small>
+                            Source: DGHS / NBTC
+                        </small>
+
+                    </article>
+
+
+                    <article class="problem-card light-card reveal">
+
+                        <p class="card-label">
+                            EMERGENCY PRESSURE
+                        </p>
+
+                        <h3>Every 2 sec.</h3>
+
+                        <p>
+                            Someone in India needs blood.
+                        </p>
+
+                        <small>
+                            Source: PIB PRID 1860053
+                        </small>
+
+                    </article>
+
+
+                    <article class="problem-card journey-card reveal">
+
+                        <p class="card-label">
+                            CURRENT JOURNEY
+                        </p>
+
+                        <div class="journey-step">
+                            <span>01</span>
+                            <p>Post request in groups</p>
+                        </div>
+
+                        <div class="journey-step">
+                            <span>02</span>
+                            <p>Call donors one by one</p>
+                        </div>
+
+                        <div class="journey-step">
+                            <span>03</span>
+                            <p>Wait without confirmation</p>
+                        </div>
+
+                        <div class="journey-question">
+                            Can we reduce time to the first qualified
+                            donor response?
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WORKFLOW SECTION ================= -->
+
+        <section class="section workflow-section" id="workflow">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <p class="small-heading red-text">
+                        SYSTEM WORKFLOW
+                    </p>
+
+                    <h2>
+                        One request. One shared response state.
+                    </h2>
+
+                    <p>
+                        The requester sees progress while every donor gets
+                        one clear decision at a time.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-grid">
+
+                    <article class="workflow-card reveal">
+
+                        <span class="step-number">01</span>
+
+                        <h3>Create Request</h3>
+
+                        <p>
+                            Add the required blood group, hospital,
+                            urgency and location.
+                        </p>
+
+                    </article>
+
+
+                    <article class="workflow-card reveal">
+
+                        <span class="step-number blue-number">02</span>
+
+                        <h3>Rank Donors</h3>
+
+                        <p>
+                            Filter donors using blood group, availability,
+                            eligibility and distance.
+                        </p>
+
+                    </article>
+
+
+                    <article class="workflow-card reveal">
+
+                        <span class="step-number green-number">03</span>
+
+                        <h3>Send SMS Alert</h3>
+
+                        <p>
+                            Send a secure response link to the highest
+                            ranked nearby donors.
+                        </p>
+
+                    </article>
+
+
+                    <article class="workflow-card reveal">
+
+                        <span class="step-number gold-number">04</span>
+
+                        <h3>Accept and Route</h3>
+
+                        <p>
+                            Reveal contact and route after consent, then
+                            mark the request as fulfilled.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES SECTION ================= -->
+
+        <section class="section features-section" id="features">
+
+            <div class="container features-container">
+
+                <div class="features-heading reveal">
+
+                    <p class="small-heading red-text">
+                        KEY FEATURES
+                    </p>
+
+                    <h2>
+                        Built around the response loop,
+                        not a feature list.
+                    </h2>
+
+                    <p>
+                        Every feature removes one source of delay,
+                        uncertainty or donor fatigue.
+                    </p>
+
+                    <a href="request.html" class="text-link">
+                        Create a Demo Request
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+
+                <div class="feature-list">
+
+                    <article class="feature-item reveal">
+
+                        <span>01</span>
+
+                        <div>
+
+                            <h3>Live Donor Availability</h3>
+
+                            <p>
+                                Donors can pause alerts when they are
+                                unavailable.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="feature-item reveal">
+
+                        <span>02</span>
+
+                        <div>
+
+                            <h3>Progressive Search Radius</h3>
+
+                            <p>
+                                Search within 5 km, then expand to
+                                10 km and 25 km.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="feature-item reveal">
+
+                        <span>03</span>
+
+                        <div>
+
+                            <h3>Consent-Based Location</h3>
+
+                            <p>
+                                Exact route and contact are displayed
+                                only after donor acceptance.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="feature-item reveal">
+
+                        <span>04</span>
+
+                        <div>
+
+                            <h3>Measurable Closure</h3>
+
+                            <p>
+                                Accepted, declined and fulfilled events
+                                remain visible.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FINAL CTA ================= -->
+
+        <section class="final-section">
+
+            <div class="container">
+
+                <div class="final-card reveal">
+
+                    <div>
+
+                        <p class="small-heading light-heading">
+                            START THE RESPONSE LOOP
+                        </p>
+
+                        <h2>
+                            Every request. Every willing donor.
+                            Connected in time.
+                        </h2>
+
+                    </div>
+
+                    <div class="final-buttons">
+
+                        <a
+                            href="request.html"
+                            class="white-button"
+                        >
+                            Create Request
+                        </a>
+
+                        <a
+                            href="donar.html"
+                            class="outline-button"
+                        >
+                            Register Donor
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div>
+
+                <a href="#home" class="logo footer-logo">
+
+                    <span class="logo-icon">
+                        <span class="blood-drop"></span>
+                    </span>
+
+                    <span class="logo-text">
+                        <strong>JeevanLink</strong>
+                        <small>Every drop counts</small>
+                    </span>
+
+                </a>
+
+                <p>
+                    A consent-based emergency blood network that connects
+                    hospitals with nearby, eligible and verified donors in
+                    minutes rather than hours.
+                </p>
+
+            </div>
+
+
+            <div class="footer-warning">
+
+                <strong>Medical disclaimer</strong>
+
+                <p>
+                    JeevanLink is a coordination tool, not a medical
+                    service. Final donor screening, cross-matching and
+                    blood compatibility checks are always carried out by
+                    the hospital or licensed blood bank.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p class="copyright">
+                    &copy; <span id="currentYear">2026</span> JeevanLink
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

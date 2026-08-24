@@ -1,0 +1,13 @@
+Flask>=3.0.0
+Flask-Cors>=4.0.0
+
+# Production web server used by Render.
+gunicorn>=21.2.0
+
+# PostgreSQL driver. Only used when DATABASE_URL is set;
+# local SQLite runs do not touch it.
+psycopg[binary]>=3.1.0
+
+# WhatsApp and SMS delivery. Without credentials the app still runs
+# and prints alerts to the console.
+twilio>=8.10.0

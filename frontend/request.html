@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Raise an emergency blood request on JeevanLink."
+    >
+
+    <title>Request Blood | JeevanLink</title>
+
+    <link rel="stylesheet" href="donar.css">
+
+    <style>
+        /* The .information-item styles in donar.css are written for the
+           red panel (white text). The results list sits on a white card,
+           so it needs readable colours of its own. */
+
+        #matchList .information-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        #matchList .information-item:last-child {
+            border-bottom: none;
+        }
+
+        #matchList .information-item h2 {
+            color: var(--text);
+            font-size: 18px;
+        }
+
+        #matchList .information-item p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        #matchList .item-number {
+            color: var(--white);
+            background: var(--red);
+            font-size: 12px;
+        }
+
+        #resultPanel {
+            margin-top: 30px;
+        }
+
+        #resultToken {
+            margin-top: 18px;
+            word-break: break-all;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="header">
+
+        <nav class="navbar container">
+
+            <a href="index.html" class="brand">
+
+                <span class="brand-icon">
+                    <span class="blood-drop"></span>
+                </span>
+
+                <span class="brand-name">
+                    <strong>JeevanLink</strong>
+                </span>
+
+            </a>
+
+
+            <a href="index.html" class="home-link">
+
+                <span aria-hidden="true">←</span>
+
+                Back to Home
+
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-section">
+
+        <div class="container registration-layout">
+
+            <!-- ================= INFO PANEL ================= -->
+
+            <section class="information-panel">
+
+                <p class="small-heading red-heading">
+                    EMERGENCY REQUEST
+                </p>
+
+                <h1>Need blood urgently?</h1>
+
+                <p class="panel-description">
+                    Fill in the details below. JeevanLink finds eligible
+                    donors nearby and alerts them straight away.
+                </p>
+
+
+                <div class="information-list">
+
+                    <div class="information-item">
+
+                        <span class="item-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <h2>Nearest donors first</h2>
+
+                            <p>
+                                Donors are ranked by distance and by how
+                                long it has been since they last donated.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-item">
+
+                        <span class="item-number blue-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h2>Automatic alerts</h2>
+
+                            <p>
+                                The three strongest matches receive an SMS
+                                alert as soon as the request is created.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-item">
+
+                        <span class="item-number green-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h2>Compatible groups</h2>
+
+                            <p>
+                                Not just an exact match. Compatible blood
+                                groups are included automatically.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="privacy-note">
+
+                    <span class="privacy-icon">✓</span>
+
+                    <p>
+                        <strong>Privacy by design.</strong>
+
+                        A donor's phone number and location are revealed
+                        only after they accept the request.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= FORM PANEL ================= -->
+
+            <section class="form-panel">
+
+                <div class="form-heading">
+
+                    <p class="small-heading red-heading">
+                        BLOOD REQUEST
+                    </p>
+
+                    <h2>Create emergency request</h2>
+
+                    <p>
+                        Fields marked with
+                        <span class="required-star">*</span>
+                        are required.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="form-message"
+                    id="formMessage"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+
+                <form id="requestForm" novalidate>
+
+                    <!-- ---------- REQUESTER ---------- -->
+
+                    <div class="form-section">
+
+                        <div class="section-title">
+
+                            <span>01</span>
+
+                            <div>
+
+                                <h3>Your details</h3>
+
+                                <p>
+                                    So the hospital and donors can reach you.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="requesterName">
+                                Full name
+                                <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="requesterName"
+                                name="requesterName"
+                                placeholder="Your full name"
+                                autocomplete="name"
+                            >
+
+                            <p class="error-message" id="requesterNameError"></p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="requesterPhone">
+                                Phone number
+                                <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="requesterPhone"
+                                name="requesterPhone"
+                                placeholder="10-digit mobile number"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel"
+                            >
+
+                            <p class="error-message" id="requesterPhoneError"></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ---------- REQUIREMENT ---------- -->
+
+                    <div class="form-section">
+
+                        <div class="section-title">
+
+                            <span>02</span>
+
+                            <div>
+
+                                <h3>What is needed</h3>
+
+                                <p>
+                                    Blood group, quantity and how urgent it is.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="bloodGroup">
+                                    Blood group
+                                    <span class="required-star">*</span>
+                                </label>
+
+                                <select id="bloodGroup" name="bloodGroup">
+                                    <option value="">Select</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+
+                                <p class="error-message" id="bloodGroupError"></p>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="units">
+                                    Units needed
+                                    <span class="required-star">*</span>
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="units"
+                                    name="units"
+                                    min="1"
+                                    max="10"
+                                    value="1"
+                                >
+
+                                <p class="error-message" id="unitsError"></p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="bloodComponent">
+                                    Component
+                                </label>
+
+                                <select id="bloodComponent" name="bloodComponent">
+                                    <option value="whole_blood">Whole blood</option>
+                                    <option value="platelets">Platelets</option>
+                                    <option value="plasma">Plasma</option>
+                                    <option value="rbc">Red cells</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="urgency">
+                                    Urgency
+                                    <span class="required-star">*</span>
+                                </label>
+
+                                <select id="urgency" name="urgency">
+                                    <option value="critical">Critical — needed now</option>
+                                    <option value="urgent">Urgent — needed today</option>
+                                    <option value="normal">Normal — planned</option>
+                                </select>
+
+                                <p class="error-message" id="urgencyError"></p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ---------- LOCATION ---------- -->
+
+                    <div class="form-section">
+
+                        <div class="section-title">
+
+                            <span>03</span>
+
+                            <div>
+
+                                <h3>Hospital location</h3>
+
+                                <p>
+                                    Used to find the donors closest to you.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="hospital">
+                                Hospital name
+                                <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="hospital"
+                                name="hospital"
+                                placeholder="For example: KGMU Lucknow"
+                            >
+
+                            <p class="error-message" id="hospitalError"></p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Hospital coordinates
+                                <span class="required-star">*</span>
+                            </label>
+
+                            <button
+                                type="button"
+                                class="location-button"
+                                id="locationButton"
+                            >
+                                <span id="locationButtonText">
+                                    Use my current location
+                                </span>
+                            </button>
+
+                            <p class="location-status" id="locationStatus"></p>
+
+                            <input type="hidden" id="latitude">
+                            <input type="hidden" id="longitude">
+
+                            <p class="error-message" id="locationError"></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ---------- SUBMIT ---------- -->
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                        id="submitButton"
+                    >
+                        <span id="submitButtonText">
+                            Create request & alert donors
+                        </span>
+                    </button>
+
+                </form>
+
+            </section>
+
+        </div>
+
+
+        <!-- ================= RESULT ================= -->
+
+        <div class="container">
+
+            <section
+                class="form-panel"
+                id="resultPanel"
+                hidden
+            >
+
+                <div class="form-heading">
+
+                    <p class="small-heading red-heading">
+                        MATCHED DONORS
+                    </p>
+
+                    <h2 id="resultHeading">Request created</h2>
+
+                    <p id="resultSummary"></p>
+
+                </div>
+
+                <div id="matchList"></div>
+
+                <p class="location-status" id="resultToken"></p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script src="request.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+{
+    // Press F5 to run the first configuration.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run JeevanLink",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "justMyCode": true,
+            "env": {
+                "FLASK_DEBUG": "1"
+            }
+        },
+        {
+            "name": "Create database (init_db)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "jeevanlink.init_db",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Load demo data (seed_data)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "jeevanlink.seed_data",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
